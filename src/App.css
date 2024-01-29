@@ -48,7 +48,7 @@ body {
   border-bottom-left-radius: 3px 15px;
   border: solid 3px transparent;
   border-bottom: dashed 3px #fdcb6e;
-  font-family: "Architects Daughter", cursive;
+  /* font-family: "Architects Daughter", cursive; */
   font-size: 1.3rem;
   color: hsla(260, 2%, 25%, 0.7);
   width: 70%;
@@ -58,10 +58,11 @@ body {
 button {
   padding: 0;
   border: none;
-  font-family: "Architects Daughter", cursive;
+  /* font-family: "Architects Daughter", cursive; */
   text-decoration: none;
   padding-bottom: 3px;
   border-radius: 5px;
+  color:black;
   background-color: #ffeaa7;
   cursor:pointer;
 }
@@ -70,6 +71,7 @@ button span {
   display: block;
   padding: 0.5rem 1rem;
   border-radius: 5px;
+  color:black;
   border: 2px solid hsl(198, 1%, 29%);
 }
 
@@ -79,12 +81,17 @@ li {
   padding: 0.5rem;
 }
 
-.alignedit{
-  margin-left:130px;
-  margin-right:10px;
+
+.alignbuttons{
   cursor:pointer;
+  margin-left:90px !important;
+  
+}
+
+.alignedit{
+  margin-right:5px;
 }
 
 .aligndelete{
-  cursor:pointer;
+  margin-right:5px;
 }

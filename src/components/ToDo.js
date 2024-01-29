@@ -80,14 +80,16 @@ export default function ToDo() {
             <tr key={e.id}>
               <li>{e.name}</li>
               <td>
-                <i
-                  className="fa-regular alignedit fa-pen-to-square"
-                  onClick={() => updateData(e._id, e.name)}
-                ></i>
-                <i
-                  className="fa-solid aligndelete fa-trash"
-                  onClick={() => deleteData(e._id)}
-                ></i>
+                <div className="alignbuttons">
+                  <i
+                    className="fa-regular alignedit fa-pen-to-square"
+                    onClick={() => updateData(e._id, e.name)}
+                  ></i>
+                  <i
+                    className="fa-solid aligndelete fa-trash"
+                    onClick={() => deleteData(e._id)}
+                  ></i>
+                </div>
               </td>
             </tr>
           ))}
