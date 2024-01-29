@@ -1,8 +1,9 @@
 import axios from "axios";
+import url from "../Constants";
 
 const updateData = async (id, name) => {
   const response = await axios({
-    url: `http://localhost:1020/todo/update/${id}`,
+    url: `${url}/todo/update/${id}`,
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     data: JSON.stringify({ name }),

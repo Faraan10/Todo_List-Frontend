@@ -1,8 +1,9 @@
 import axios from "axios";
+import url from "../Constants";
 
 const getData = async () => {
   const response = await axios({
-    url: "http://localhost:1020/todo/",
+    url: `${url}/todo/`,
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
