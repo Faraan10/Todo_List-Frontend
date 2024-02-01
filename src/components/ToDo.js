@@ -3,12 +3,15 @@ import getDataApi from "../api/getDataApi";
 import postDataApi from "../api/postDataApi";
 import updateDataApi from "../api/updateDataApi";
 import deleteDataApi from "../api/deleteDataApi";
+import Spinner from "./Spinner";
 
 export default function ToDo() {
   const [data, setData] = useState({ name: "" }); // for setting data from onChange
   const [id, setId] = useState();
   const [items, setItems] = useState([]); // storing data in array to map ( map can only be used for array items)
   const [update, setUpdate] = useState(false);
+
+  const [loading, setLoading] = useState(false);
 
   const { name } = data;
 
@@ -20,6 +23,7 @@ export default function ToDo() {
   const getData = async () => {
     const response = await getDataApi();
     setItems(response);
+    setLoading(true);
   };
 
   const postData = async (todo) => {
@@ -61,6 +65,7 @@ export default function ToDo() {
 
   useEffect(() => {
     getData();
+    setLoading(false);
   }, []);
 
   return (
@@ -75,25 +80,29 @@ export default function ToDo() {
         </button>
       </form>
       <div>
-        <table>
-          {items.map((e) => (
-            <tr key={e.id}>
-              <li>{e.name}</li>
-              <td>
-                <div className="alignbuttons">
-                  <i
-                    className="fa-regular alignedit fa-pen-to-square"
-                    onClick={() => updateData(e._id, e.name)}
-                  ></i>
-                  <i
-                    className="fa-solid aligndelete fa-trash"
-                    onClick={() => deleteData(e._id)}
-                  ></i>
-                </div>
-              </td>
-            </tr>
-          ))}
-        </table>
+        {!loading ? (
+          <Spinner />
+        ) : (
+          <table>
+            {items.map((e) => (
+              <tr key={e.id}>
+                <li>{e.name}</li>
+                <td>
+                  <div className="alignbuttons">
+                    <i
+                      className="fa-regular alignedit fa-pen-to-square"
+                      onClick={() => updateData(e._id, e.name)}
+                    ></i>
+                    <i
+                      className="fa-solid aligndelete fa-trash"
+                      onClick={() => deleteData(e._id)}
+                    ></i>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </table>
+        )}
       </div>
     </div>
   );
